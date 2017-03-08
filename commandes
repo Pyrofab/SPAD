@@ -1,0 +1,5 @@
+git init -> initialise votre dossier (à faire une seule fois)
+git pull [adresse] -> récupérer tous les fichiers présents sur GitHub (à faire régulièrement)
+git add [fichier] -> à faire à chaque fois que vous créez un fichier
+git commit -m [message] -> Effectue une mise à jour
+git push [adresse] -> envoie votre mise à jour sur GitHub
