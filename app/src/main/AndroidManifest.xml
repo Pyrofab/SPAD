@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.spadteam.spad.CreateEvent" />
-        <activity android:name="com.spadteam.spad.ContactManagerActivity"></activity>
+        <activity android:name="com.spadteam.spad.ContactManagerActivity"/>
+        <activity android:name="com.spadteam.spad.ContactEditorActivity"/>
     </application>
 
 </manifest>

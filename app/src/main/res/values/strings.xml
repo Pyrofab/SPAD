@@ -12,4 +12,6 @@
     <string name="edit_contact_phone">phone number (optional)</string>
     <string name="edit_contact_mail">mail (optional)</string>
     <string name="edit_contact_confirmation">Save changes</string>
+    <string name="contacts">Contacts</string>
+    <string name="delete">Delete</string>
 </resources>

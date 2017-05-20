@@ -6,7 +6,10 @@ import android.widget.Toast
  * Created by Fabien on 18/05/2017.
  */
 class KotlinTest {
+    private data class SPADContact(val name : String, val number: Int, val mail : String)
+
     fun test(abc : String): Int? {
-        return 1;
+        println(abc)
+        return SPADContact("abc", 12, "abc@gmail.com").number
     }
 }
