@@ -81,11 +81,6 @@
     </LinearLayout>
 
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="access contacts"
-            android:onClick="readContacts"/>
 
         <Button
             android:id="@+id/event_creation_button"
@@ -95,19 +90,10 @@
             android:onClick="onMessageButtonClick"/>
 
         <ListView
-            android:id="@+id/contact_list"
+            android:id="@+id/contact_list2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </ListView>
-
-
-        <!--<CheckBox
-            android:id="@+id/mega"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mega fonction !"
-            />-->
 
 
     </LinearLayout>
