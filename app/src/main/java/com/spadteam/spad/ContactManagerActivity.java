@@ -138,19 +138,19 @@ public class ContactManagerActivity extends Activity {
 
             if(c != null) {
                 TextView tt1 = (TextView) v.findViewById(R.id.contact_row_id);  // TODO fix this
-//                TextView tt2 = (TextView) v.findViewById(R.id.contact_description);
-//                TextView tt3 = (TextView) v.findViewById(R.id.contact_row_id);
+                TextView tt2 = (TextView) v.findViewById(R.id.contact_description);
+                TextView tt3 = (TextView) v.findViewById(R.id.contact_row_id);
 
                 if(tt1 != null) {
                     tt1.setText(c.getName());
                     Toast.makeText(getContext(), c.getName(), Toast.LENGTH_SHORT).show();
                 }
-//                if(tt2 != null) {
-//                    tt2.setText(c.getMail());
-//                }
-//                if(tt3 != null) {
-//                    tt3.setText(c.getPhoneNo());
-//                }
+                if(tt2 != null) {
+                    tt2.setText(c.getMail());
+                }
+                if(tt3 != null) {
+                    tt3.setText(c.getPhoneNo());
+                }
             }
             return v;
         }
