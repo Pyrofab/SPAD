@@ -23,8 +23,8 @@ public class TextMessageManager extends Activity {
     String message;
 
     public void sendSMSMessage(View view) {
-        txtphoneNo = (EditText) findViewById(R.id.phone_number_input);
-        txtMessage = (EditText) findViewById(R.id.event_content_input);
+        txtphoneNo = (EditText) findViewById(R.id.place_event);
+        txtMessage = (EditText) findViewById(R.id.event_time);
         phoneNo = txtphoneNo.getText().toString();
         message = txtMessage.getText().toString();
 
@@ -69,7 +69,7 @@ public class TextMessageManager extends Activity {
                             Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
                     return;
                 }
             }

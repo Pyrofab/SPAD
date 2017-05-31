@@ -11,31 +11,104 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place : "
+            android:layout_marginLeft="10dip"
+            android:textStyle="bold"
+            android:textColor="#FF0000"
+            android:gravity="center"
+            />
         <EditText
-            android:id="@+id/phone_number_input"
+            android:id="@+id/place_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/phone_number_hint"
-            android:text="+33685755302"/>
+            android:hint="restaurant/parc"
+            android:text=""/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:text="Time : "
+            android:textStyle="bold"
+            android:textColor="#FF0000"
+            android:gravity="center"
+            />
         <EditText
-            android:id="@+id/event_content_input"
+            android:id="@+id/event_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/event_content_hint"/>
+            android:hint="18h15"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="Description : "
+                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/event_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/event_content_hint"/>
+
+    </LinearLayout>
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="access contacts"
+            android:onClick="readContacts"/>
 
         <Button
             android:id="@+id/event_creation_button"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/create_event"
             android:onClick="onMessageButtonClick"/>
 
-        <Button
+        <ListView
+            android:id="@+id/contact_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
+        <!--<CheckBox
+            android:id="@+id/mega"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="access contacts"
-            android:onClick="readContacts"/>
+            android:text="Mega fonction !"
+            />-->
+
 
     </LinearLayout>
 

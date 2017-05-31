@@ -11,12 +11,15 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class CreateEvent extends AppCompatActivity {
 
-    EditText txtphoneNo;
+    EditText placeEvent;
+    EditText timeEvent;
     EditText txtMessage;
+
     private String phoneNo;
     private String message;
 
@@ -26,13 +29,18 @@ public class CreateEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
-        txtphoneNo = (EditText) findViewById(R.id.phone_number_input);
-        txtMessage = (EditText) findViewById(R.id.event_content_input);
+        placeEvent = (EditText) findViewById(R.id.place_event);
+        txtMessage = (EditText) findViewById(R.id.event_description);
+        timeEvent = (EditText) findViewById(R.id.event_time);
+        final ListView listview = (ListView) findViewById(R.id.contact_list);
+
+
+
     }
 
     public void onMessageButtonClick(View v) {
         System.out.println("slt");
-        phoneNo = txtphoneNo.getText().toString();
+        phoneNo = placeEvent.getText().toString();
         message = txtMessage.getText().toString();
 
         if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEvent.this,
@@ -60,10 +68,12 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     public void readContacts(View v) {
-        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key),
-                Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key),Context.MODE_PRIVATE);
+        final ListView listview = (ListView) findViewById(R.id.contact_list);
+
+        /*
         for(String s : sharedPref.getAll().keySet()) {
             Toast.makeText(this, s + ":" + sharedPref.getAll().get(s), Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 }
