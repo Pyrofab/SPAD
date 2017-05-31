@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by Fabien on 18/05/2017.
@@ -25,7 +23,7 @@ public class Contact {
      * @param context the activity that invokes this method
      * @return a read-only version of the contact list
      */
-    public static List<Contact> getContacts(Context context) {
+    static List<Contact> getContacts(Context context) {
         if(contacts == null) {
             try {
                 contacts = new ArrayList<>();
@@ -62,12 +60,39 @@ public class Contact {
         editor.apply();
     }
 
+    static void removeContact(Contact contact, Context context) {
+        removeContact(contacts.indexOf(contact), context);
+    }
+
+    static void removeContact(int index, Context context) {
+        contacts.remove(index);
+        Toast.makeText(context, "contact deleted", Toast.LENGTH_SHORT).show();
+    }
+
+    static Contact getContact(int id) {
+        return contacts.get(id);
+    }
+
     static void clearContacts(Context context) {
         contacts.clear();
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
+        editor.apply();
+    }
+
+    static void refreshData(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.putInt("number", contacts.size());
+        for(int i = 1; i <= contacts.size(); i++) {
+            editor.putString(i + "#name", contacts.get(i-1).getName());
+            editor.putString(i + "#phone", contacts.get(i-1).getPhoneNo());
+            editor.putString(i + "#mail", contacts.get(i-1).getMail());
+        }
         editor.apply();
     }
 /*
@@ -107,16 +132,16 @@ public class Contact {
         return phoneNo;
     }
 
-    public void setPhoneNo(PhoneNumber phoneNo) {
-        this.phoneNo = phoneNo.toString();
+    void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     String getMail() {
         return mail;
     }
 
-    public void setMail(MailAddress mail) {
-        this.mail = mail.toString();
+    void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override
@@ -127,7 +152,7 @@ public class Contact {
                 ", mail='" + mail + '\'' +
                 '}';
     }
-
+/*
     static class PhoneNumber {
         static final PhoneNumber EMPTY = new PhoneNumber("");
         private String phoneNo;
@@ -152,7 +177,7 @@ public class Contact {
         static final Pattern mailPattern = Pattern.compile("^(\\w)+@(\\w)+\\.(\\w)+$");
 
         MailAddress(String mail) {
-            if(mailPattern.matcher(mail).matches() || mail == "")
+            if(mailPattern.matcher(mail).matches() || mail.equals(""))
                 this.mail = mail;
             else
                 throw new InvalidParameterException("not a valid mail address");
@@ -164,5 +189,5 @@ public class Contact {
         }
 
 
-    }
+    }*/
 }
