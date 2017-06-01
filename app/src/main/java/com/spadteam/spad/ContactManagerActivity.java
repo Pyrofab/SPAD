@@ -105,7 +105,7 @@ public class ContactManagerActivity extends Activity {
             com.spadteam.spad.Contact c = getItem(position);
 
             if(c != null) {
-                TextView tt1 = (TextView) v.findViewById(R.id.contact_row_id);  // TODO fix this
+                TextView tt1 = (TextView) v.findViewById(R.id.contact_row_id);
                 TextView tt2 = (TextView) v.findViewById(R.id.contact_description);
                 TextView tt3 = (TextView) v.findViewById(R.id.categoryId);
 
