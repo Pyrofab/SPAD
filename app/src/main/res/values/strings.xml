@@ -14,4 +14,9 @@
     <string name="edit_contact_confirmation">Save changes</string>
     <string name="contacts">Contacts</string>
     <string name="delete">Delete</string>
+    <string name="msg__subscribed">Subscribed !</string>
+    <string name="read_messages">Read my messages</string>
+    <string name="message_template">message :%1$s<br/> thread: %2$s<br/>address: %3$s<br/>contact: %4$s<br/>timeStamp: %5$s<br/>body: %6$s</string>
+    <string name="right_arrow"><![CDATA[>]]></string>
+    <string name="left_arrow"><![CDATA[<]]></string>
 </resources>

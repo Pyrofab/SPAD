@@ -64,7 +64,7 @@ public class Contact {
         removeContact(contacts.indexOf(contact), context);
     }
 
-    static void removeContact(int index, Context context) {
+    private static void removeContact(int index, Context context) {
         contacts.remove(index);
         Toast.makeText(context, "contact deleted", Toast.LENGTH_SHORT).show();
     }

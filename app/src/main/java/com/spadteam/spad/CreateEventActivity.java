@@ -2,7 +2,6 @@ package com.spadteam.spad;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -14,21 +13,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CreateEvent extends AppCompatActivity {
+public class CreateEventActivity extends AppCompatActivity {
 
     EditText placeEvent;
     EditText timeEvent;
     EditText txtMessage;
     protected ContactArrayAdapter adapter;
-
-    private String phoneNo;
-    private String message;
 
     private static final int MY_PERMISSIONS_REQUEST_SEND_MESSAGE = 0;
 
@@ -46,25 +41,24 @@ public class CreateEvent extends AppCompatActivity {
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener((parent, view, position, id) -> {
-            ((CheckBox)findViewById(R.id.checked_contact)).performClick();
+            findViewById(R.id.checked_contact).performClick();
             Toast.makeText(this, "click !", Toast.LENGTH_SHORT).show();
         });
 
     }
 
     public void onMessageButtonClick(View v) {
-        System.out.println("slt");
-        phoneNo = placeEvent.getText().toString();
-        message = txtMessage.getText().toString();
+        String phoneNo = placeEvent.getText().toString();
+        String message = txtMessage.getText().toString();
 
-        if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEvent.this,
+        if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEventActivity.this,
                 Manifest.permission.SEND_SMS)) {
-            ActivityCompat.requestPermissions(CreateEvent.this, new String[]{Manifest.permission.SEND_SMS},
+            ActivityCompat.requestPermissions(CreateEventActivity.this, new String[]{Manifest.permission.SEND_SMS},
                     MY_PERMISSIONS_REQUEST_SEND_MESSAGE);
             Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
                     Toast.LENGTH_LONG).show();
         } else {
-            sendSMS(phoneNo, message);
+            sendSMS(phoneNo, "[invite]" + message);
         }
     }
 
@@ -75,7 +69,7 @@ public class CreateEvent extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Message Sent",
                     Toast.LENGTH_LONG).show();
         } catch (Exception ex) {
-            Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
+            Toast.makeText(getApplicationContext(), ex.getMessage(),
                     Toast.LENGTH_LONG).show();
             ex.printStackTrace();
         }

@@ -3,16 +3,16 @@
     package="com.spadteam.spad">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.spadteam.spad.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,9 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.spadteam.spad.CreateEvent" />
-        <activity android:name="com.spadteam.spad.ContactManagerActivity"/>
-        <activity android:name="com.spadteam.spad.ContactEditorActivity"/>
+        <activity android:name=".CreateEventActivity" />
+        <activity android:name=".ContactManagerActivity" />
+        <activity android:name=".ContactEditorActivity" />
+        <activity android:name=".CurrentEventsActivity" />
     </application>
 
 </manifest>
