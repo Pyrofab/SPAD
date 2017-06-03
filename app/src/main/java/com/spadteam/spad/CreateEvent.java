@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,10 @@ public class CreateEvent extends AppCompatActivity {
 
     private String phoneNo;
     private String message;
+
+    static Event eventEdited;
+
+    public static Event getEventEdited(){return eventEdited;}
 
     private static final int MY_PERMISSIONS_REQUEST_SEND_MESSAGE = 0;
 
@@ -53,18 +59,60 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     public void onMessageButtonClick(View v) {
-        System.out.println("slt");
-        phoneNo = placeEvent.getText().toString();
-        message = txtMessage.getText().toString();
+        //System.out.println("slt");
+        phoneNo = "0643532554";//placeEvent.getText().toString(); --> recuperer les numeros de ceux qui sont cochés
+        message = txtMessage.getText().toString()+" "+placeEvent.getText().toString()+" "+timeEvent.getText().toString();
 
-        if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEvent.this,
-                Manifest.permission.SEND_SMS)) {
-            ActivityCompat.requestPermissions(CreateEvent.this, new String[]{Manifest.permission.SEND_SMS},
-                    MY_PERMISSIONS_REQUEST_SEND_MESSAGE);
-            Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
-                    Toast.LENGTH_LONG).show();
-        } else {
-            sendSMS(phoneNo, message);
+        //pour créer un event au clic du bouton
+
+        try {
+            TextView placeField = (TextView) findViewById(R.id.place_event);
+            TextView timeField = (TextView) findViewById(R.id.event_time);
+            TextView descriptionField = (TextView) findViewById(R.id.event_description);
+            String place = placeField.getText().toString();
+            String time = timeField.getText().toString();
+            String description = descriptionField.getText().toString();
+
+            if (place.equals("")) {
+                Toast.makeText(this, "please input a valid place", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (time.equals("")) {
+                Toast.makeText(this, "please input a valid time", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (description.equals("")) {
+                Toast.makeText(this, "please input a valid description", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if(eventEdited == null) {
+                Event event = new Event(place, time, description);
+
+                Event.addEvents(event, this);
+
+                if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEvent.this,
+                        Manifest.permission.SEND_SMS)) {
+                    ActivityCompat.requestPermissions(CreateEvent.this, new String[]{Manifest.permission.SEND_SMS},
+                            MY_PERMISSIONS_REQUEST_SEND_MESSAGE);
+                    Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    sendSMS(phoneNo, message); //send the message only with description
+                }
+
+            } else {
+                eventEdited.setPlace(place);
+                eventEdited.setDescription(description);
+                eventEdited.setTime(time);
+                eventEdited = null;
+                Event.refreshData(this);
+            }
+        } catch (RuntimeException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            setResult(RESULT_OK);
+            finish();
         }
     }
 
@@ -91,7 +139,18 @@ public class CreateEvent extends AppCompatActivity {
     }
 */
 
-    private class ContactArrayAdapter extends BaseAdapter {
+
+
+
+
+
+
+
+
+
+
+
+    private class ContactArrayAdapter extends BaseAdapter { //pour afficher les contacts avec la chekcbox
 
         Context context;
 

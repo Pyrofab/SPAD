@@ -24,6 +24,8 @@
         <activity android:name="com.spadteam.spad.CreateEvent" />
         <activity android:name="com.spadteam.spad.ContactManagerActivity"/>
         <activity android:name="com.spadteam.spad.ContactEditorActivity"/>
+        <activity android:name="com.spadteam.spad.CurrentEvent"/>
+        <activity android:name="com.spadteam.spad.EventChosen"/>
     </application>
 
 </manifest>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TableRow android:layout_width="fill_parent"
+        android:id="@+id/TableRow02"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/event_row_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_weight="1"
+            android:typeface="monospace"
+            android:height="40sp"
+            android:textSize="20sp"/>
+    </TableRow>
+
+
+
+    <TableRow android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:height="20sp" />
+
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:id="@+id/event_description"
+            />
+    </TableRow>
+
+</TableLayout>

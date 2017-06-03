@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         Class targetActivity;
         switch (v.getId()) {
-            case R.id.fab:
-                targetActivity = CreateEvent.class; break;
+            /*case R.id.fab:
+                targetActivity = CreateEvent.class; break;*/
             case R.id.create_event_button:
                 targetActivity = CreateEvent.class; break;
             case R.id.review_event_button:
-                targetActivity = CreateEvent.class; break;  //TODO change this to the right activity
+                targetActivity = CurrentEvent.class; break;
             case R.id.manage_contacts_button:
                 targetActivity = ContactManagerActivity.class; break;
             default: return;
