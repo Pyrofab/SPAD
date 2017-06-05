@@ -22,7 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CreateEvent extends AppCompatActivity {
+public class CreateEventActivity extends AppCompatActivity {
 
 
     protected ContactArrayAdapter adapter;
@@ -80,9 +80,9 @@ public class CreateEvent extends AppCompatActivity {
                 Event event = new Event(place, time, description);
                 Event.addEvents(event, this);
 
-                if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEvent.this,
+                if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEventActivity.this,
                         Manifest.permission.SEND_SMS)) {
-                    ActivityCompat.requestPermissions(CreateEvent.this, new String[]{Manifest.permission.SEND_SMS},
+                    ActivityCompat.requestPermissions(CreateEventActivity.this, new String[]{Manifest.permission.SEND_SMS},
                             MY_PERMISSIONS_REQUEST_SEND_MESSAGE);
                     Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
                             Toast.LENGTH_LONG).show();

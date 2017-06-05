@@ -29,7 +29,7 @@ public class ContactManagerActivity extends Activity {
         adapter = new ContactArrayAdapter(this);
         listview.setAdapter(adapter);
 
-        listview.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+        listview.setOnItemClickListener((parent, view, position, id) -> {
             Intent i = new Intent(ContactManagerActivity.this, ContactEditorActivity.class);
 
             ContactEditorActivity.contactEdited = Contact.getContact(position);
