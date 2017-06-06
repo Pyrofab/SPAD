@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 /**
  * Created by Clément on 03/06/2017.
+ *
  */
 
 public class CurrentEvent extends Activity {

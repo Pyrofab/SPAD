@@ -15,6 +15,15 @@
             android:typeface="monospace"
             android:height="40sp"
             android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="viewEnd"
+            android:gravity="end"
+            android:height="20sp" />
     </TableRow>
 
 
@@ -22,17 +31,10 @@
     <TableRow android:layout_height="wrap_content"
         android:layout_width="fill_parent">
 
-        <TextView
-            android:id="@+id/event_time"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:height="20sp" />
-
         <TextView android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_weight="1"
-            android:gravity="end"
+            android:gravity="center"
             android:id="@+id/event_description"
             />
     </TableRow>

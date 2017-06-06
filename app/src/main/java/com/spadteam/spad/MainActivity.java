@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.create_event_button:
                 targetActivity = CreateEventActivity.class; break;
             case R.id.review_event_button:
-                targetActivity = CurrentEvent.class; break;
+                targetActivity = CurrentEventsActivity.class; break;
             case R.id.manage_contacts_button:
                 targetActivity = ContactManagerActivity.class; break;
             default: return;

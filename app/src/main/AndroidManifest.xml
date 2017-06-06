@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spadteam.spad">
+    package="com.spadteam.spad"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
 
@@ -25,6 +27,7 @@
         <activity android:name="com.spadteam.spad.ContactManagerActivity"/>
         <activity android:name="com.spadteam.spad.ContactEditorActivity"/>
         <activity android:name="com.spadteam.spad.CurrentEvent"/>
+        <activity android:name="com.spadteam.spad.CurrentEventsActivity"/>
         <activity android:name="com.spadteam.spad.EventChosen"/>
     </application>
 
