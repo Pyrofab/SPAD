@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             /*case R.id.fab:
                 targetActivity = CreateEvent.class; break;*/
             case R.id.create_event_button:
-                targetActivity = CreateEvent.class; break;
+                targetActivity = CreateEventActivity.class; break;
             case R.id.review_event_button:
                 targetActivity = CurrentEvent.class; break;
             case R.id.manage_contacts_button:

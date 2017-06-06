@@ -23,7 +23,7 @@ public class ContactEditorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_editor);
 
-        if(contactEdited != null) {
+        if(contactEdited != null) { //quand on veut modifier le contact
             ((TextView) findViewById(R.id.name_input_field)).setText(
                     contactEdited.getName());
             ((TextView) findViewById(R.id.phone_number_input_field)).setText(
@@ -57,7 +57,6 @@ public class ContactEditorActivity extends Activity {
 
             if(contactEdited == null) {
                 Contact contact = new Contact(name, phoneNo, mail);
-
                 Contact.addContact(contact, this);
 
             } else {

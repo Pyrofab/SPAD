@@ -35,7 +35,7 @@ public class CurrentEvent extends Activity {
         listview.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             Intent i = new Intent(CurrentEvent.this, EventChosen.class);
 
-            CreateEvent.eventEdited = Event.getEvent(position);
+            CreateEventActivity.eventEdited = Event.getEvent(position);
 
             startActivityForResult(i, EDIT_EVENT_REQUEST);
         });

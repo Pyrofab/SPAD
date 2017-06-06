@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "890513448450",
+    "firebase_url": "https://fir-spad.firebaseio.com",
+    "project_id": "firebase-spad",
+    "storage_bucket": "firebase-spad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890513448450:android:23174410ba9b27ad",
+        "android_client_info": {
+          "package_name": "spadteam.spad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890513448450-06t9tu2467ejptspfbpgrif2rku9lin8.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "890513448450-gq18j6sjvsbvrajhnp35ik9devfjpgob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBfmsEnD_RmwINa-XtY84PlBJhJS_8-KQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890513448450:android:aa95e6fee1e81b52",
+        "android_client_info": {
+          "package_name": "com.spad.spad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890513448450-5b975sp6i5fenehvkhj4si7v5t080rld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spad.spad",
+            "certificate_hash": "dbe5d2e2776197ed55663969baf285c6c6b015f5"
+          }
+        },
+        {
+          "client_id": "890513448450-06t9tu2467ejptspfbpgrif2rku9lin8.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "890513448450-gq18j6sjvsbvrajhnp35ik9devfjpgob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBfmsEnD_RmwINa-XtY84PlBJhJS_8-KQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890513448450-06t9tu2467ejptspfbpgrif2rku9lin8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

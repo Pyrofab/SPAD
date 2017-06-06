@@ -24,13 +24,11 @@ import android.widget.Toast;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-    EditText placeEvent;
-    EditText timeEvent;
-    EditText txtMessage;
     protected ContactArrayAdapter adapter;
 
     private String phoneNo;
     private String message;
+
 
     static Event eventEdited;
 
@@ -42,36 +40,27 @@ public class CreateEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
-        placeEvent = (EditText) findViewById(R.id.place_event);
-        txtMessage = (EditText) findViewById(R.id.event_description);
-        timeEvent = (EditText) findViewById(R.id.event_time);
 
         final ListView listview = (ListView) findViewById(R.id.contact_list2);
 
         adapter = new ContactArrayAdapter(this);
         listview.setAdapter(adapter);
-
-        listview.setOnItemClickListener((parent, view, position, id) -> {
-            ((CheckBox)findViewById(R.id.checked_contact)).performClick();
-            Toast.makeText(this, "click !", Toast.LENGTH_SHORT).show();
-        });
-
     }
 
     public void onMessageButtonClick(View v) {
         //System.out.println("slt");
         phoneNo = "0643532554";//placeEvent.getText().toString(); --> recuperer les numeros de ceux qui sont cochés
-        message = txtMessage.getText().toString()+" "+placeEvent.getText().toString()+" "+timeEvent.getText().toString();
 
         //pour créer un event au clic du bouton
 
         try {
-            TextView placeField = (TextView) findViewById(R.id.place_event);
-            TextView timeField = (TextView) findViewById(R.id.event_time);
-            TextView descriptionField = (TextView) findViewById(R.id.event_description);
-            String place = placeField.getText().toString();
-            String time = timeField.getText().toString();
-            String description = descriptionField.getText().toString();
+            EditText placeEvent = (EditText)findViewById(R.id.place_event);
+            EditText timeEvent = (EditText)findViewById(R.id.event_time);
+            EditText descriptionEvent= (EditText) findViewById(R.id.event_description);
+            String place = placeEvent.getText().toString();
+            String time = timeEvent.getText().toString();
+            String description = descriptionEvent.getText().toString();
+
 
             if (place.equals("")) {
                 Toast.makeText(this, "please input a valid place", Toast.LENGTH_SHORT).show();
@@ -86,9 +75,8 @@ public class CreateEventActivity extends AppCompatActivity {
                 return;
             }
 
-            if(eventEdited == null) {
+           // if(eventEdited == null) {
                 Event event = new Event(place, time, description);
-
                 Event.addEvents(event, this);
 
                 if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEventActivity.this,
@@ -98,16 +86,24 @@ public class CreateEventActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
                             Toast.LENGTH_LONG).show();
                 } else {
-                    sendSMS(phoneNo, message); //send the message only with description
-                }
+                    /*CheckBox cb = (CheckBox) findViewById(R.id.checked_contact);
 
-            } else {
+                    if (cb.isChecked()) {
+                        Toast.makeText(this, "click !", Toast.LENGTH_SHORT).show();
+                    }*/
+                    message = "[Invitation] Vous avez RDV au " + placeEvent.getText().toString() + " à " + timeEvent.getText().toString() + " pour " + descriptionEvent.getText().toString() + ".";
+
+                    //for(int i=0; i<phoneNo.length;i++){}
+                    sendSMS(phoneNo, message); //send the message
+                }
+            /*} else {
                 eventEdited.setPlace(place);
                 eventEdited.setDescription(description);
                 eventEdited.setTime(time);
                 eventEdited = null;
                 Event.refreshData(this);
-            }
+            }*/
+
         } catch (RuntimeException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         } finally {
@@ -141,16 +137,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-    private class ContactArrayAdapter extends BaseAdapter { //pour afficher les contacts avec la chekcbox
+      private class ContactArrayAdapter extends BaseAdapter { //pour afficher les contacts avec la chekcbox
 
         Context context;
 

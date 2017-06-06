@@ -16,7 +16,7 @@ public class Event {
     private String time;
     private String description;
 
-    private List<Contact> contactsInvited; //TODO utiliser en fonction des contacts cochés
+    //private List<Contact> contactsInvited; //TODO utiliser en fonction des contacts cochés
 
     private static List<Event> events;
 
@@ -54,8 +54,7 @@ public class Event {
 
     static void addEvents(Event event, Context context) {
         events.add(event);
-        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key_event),
-                Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key_event),Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         int nbEvents = events.size();
         editor.putInt("number", nbEvents);
