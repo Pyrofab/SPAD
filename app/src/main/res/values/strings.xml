@@ -16,4 +16,8 @@
     <string name="contacts">Contacts</string>
     <string name="delete">Delete</string>
     <string name="delete_event">Delete this event</string>
+    <string name="right_arrow"><![CDATA[>]]></string>
+    <string name="left_arrow"><![CDATA[<]]></string>
+    <string name="read_messages">read messages</string>
+    <string name="message_template">messageId : %1$s, threadId : %2$s, address : %3$s, contactId : %4$s, timeStamp : %5$s, body : %6$s</string>
 </resources>
