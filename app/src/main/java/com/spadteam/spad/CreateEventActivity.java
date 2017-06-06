@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-
     protected ContactArrayAdapter adapter;
 
     private String phoneNo;
