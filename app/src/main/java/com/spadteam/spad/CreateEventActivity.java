@@ -106,10 +106,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
         } catch (RuntimeException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        } finally {
+        } //finally {
             setResult(RESULT_OK);
             finish();
-        }
+       // }
     }
 
     public void sendSMS(String phoneNo, String msg) {
