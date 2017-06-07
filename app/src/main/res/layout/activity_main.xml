@@ -20,14 +20,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_main" /> <!-- appel a content main pour afficher les boutons-->
 
-    <android.support.design.widget.FloatingActionButton
+   <!-- <android.support.design.widget.FloatingActionButton
         android:id="@+id/subscribeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:onClick="onClick" />
-
+-->
 </android.support.design.widget.CoordinatorLayout>

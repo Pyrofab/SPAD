@@ -1,6 +1,7 @@
 package com.spadteam.spad;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class EventChosen extends Activity{
             delete.setText(R.string.delete_event);
             delete.setOnClickListener((View v) -> {
                 Event.removeEvent(CreateEventActivity.getEventEdited(), this);
+                CreateEventActivity.getEventEdited().refreshData(this); //gere la MAJ des evenements apres la suppression
                 setResult(RESULT_OK);
                 finish();
             });

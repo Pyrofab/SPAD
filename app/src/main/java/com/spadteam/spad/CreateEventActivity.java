@@ -106,7 +106,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
         } catch (RuntimeException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        } //finally {
+        } //finally { //on enleve finally pour eviter de retourner au menu principal a chaque fois qu on rempli mal les cases.
             setResult(RESULT_OK);
             finish();
        // }

@@ -64,7 +64,7 @@ public class Event {
         editor.apply();
     }
 
-    static void removeEvent(Event event, Context context) {
+    static void removeEvent(Event event, Context context) { //on appel celle ci dans le code qui appel celle du dessous
         removeEvent(events.indexOf(event), context);
     }
 
@@ -86,6 +86,8 @@ public class Event {
         }
         editor.apply();
     }
+
+
     static Event getEvent(int id) {
         return events.get(id);
     }

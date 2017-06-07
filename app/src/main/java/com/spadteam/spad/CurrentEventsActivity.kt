@@ -24,6 +24,9 @@ class CurrentEventsActivity : AppCompatActivity() {
     lateinit private var adapter: EventArrayAdapter
     internal val EDIT_EVENT_REQUEST = 0
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_current_events)
@@ -53,6 +56,9 @@ class CurrentEventsActivity : AppCompatActivity() {
             readMessages()
         }
     }
+
+
+
 
     fun readMessages() {
         val SORT_ORDER = "date DESC"
