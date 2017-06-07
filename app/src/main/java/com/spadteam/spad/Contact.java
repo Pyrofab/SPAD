@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by Fabien on 18/05/2017.
@@ -155,13 +157,15 @@ public class Contact {
                 ", mail='" + mail + '\'' +
                 '}';
     }
-/*
     static class PhoneNumber {
         static final PhoneNumber EMPTY = new PhoneNumber("");
         private String phoneNo;
-        static final Pattern phonePattern = Pattern.compile("^(\\+)?(\\d){9,11}$");
+        static Pattern phonePattern;
 
         PhoneNumber(String phoneNo) {
+            if(phonePattern == null)
+                phonePattern = Pattern.compile("^(\\+|0)?(\\d){8,11}$");
+
             if(phonePattern.matcher(phoneNo).matches() || phoneNo.equals(""))
                 this.phoneNo = phoneNo;
             else
@@ -175,11 +179,14 @@ public class Contact {
     }
 
     static class MailAddress {
-        static final MailAddress EMPTY = new MailAddress("");
+        public static final MailAddress EMPTY = new MailAddress("");
         private String mail;
-        static final Pattern mailPattern = Pattern.compile("^(\\w)+@(\\w)+\\.(\\w)+$");
+        private static Pattern mailPattern;
 
         MailAddress(String mail) {
+            if(mailPattern == null)
+                mailPattern = Pattern.compile("^(\\w)+@(\\w)+\\.(\\w)+$");
+
             if(mailPattern.matcher(mail).matches() || mail.equals(""))
                 this.mail = mail;
             else
@@ -192,5 +199,5 @@ public class Contact {
         }
 
 
-    }*/
+    }
 }

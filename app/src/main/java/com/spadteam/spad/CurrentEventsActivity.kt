@@ -58,7 +58,7 @@ class CurrentEventsActivity : AppCompatActivity() {
         val SORT_ORDER = "date DESC"
         val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), arrayOf("_id", "thread_id", "address", "person", "date", "body"), null, null, SORT_ORDER)
 
-        if (cursor!!.moveToFirst()) { // must check the result to prevent exception
+        if (cursor?.moveToFirst() ?: return) { // must check the result to prevent exception
             do {
                 val messageId = cursor.getLong(0)
                 val threadId = cursor.getLong(1)
@@ -68,7 +68,8 @@ class CurrentEventsActivity : AppCompatActivity() {
                 val body = cursor.getString(5)
                 (findViewById(R.id.showSms) as TextView).text = getString(R.string.message_template).format(messageId, threadId, address, contactId, timeStamp, body)
                 if(body.contains("[Invitation]"))
-                    listEvents.add(body)
+                    listEvents.add(body)        //Ici j'ajoute le corps du sms a la liste
+
                 refresh()
             } while (cursor.moveToNext())
         } else {
@@ -87,6 +88,9 @@ class CurrentEventsActivity : AppCompatActivity() {
         refresh()
     }
 
+    /**
+     * Est censé rafraichir la View pour afficher le message en cours
+     */
     fun refresh () {
         try {
             (findViewById(R.id.show_msg_body) as TextView).text = listEvents[index]
