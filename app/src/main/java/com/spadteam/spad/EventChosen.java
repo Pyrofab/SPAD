@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.List;
 
 
 /**
@@ -33,8 +34,8 @@ public class EventChosen extends Activity{
             //Button delete = new Button(this);
             delete.setText(R.string.delete_event);
             delete.setOnClickListener((View v) -> {
-                Event.removeEvent(CreateEventActivity.getEventEdited(), this);
-                CreateEventActivity.getEventEdited().refreshData(this); //gere la MAJ des evenements apres la suppression
+                //Event.removeEvent(CreateEventActivity.getEventEdited(), this);
+                //Event.refreshData(this); //gere la MAJ des evenements apres la suppression
                 setResult(RESULT_OK);
                 finish();
             });

@@ -21,13 +21,13 @@
             android:textColor="#fff"
             android:background="#3f3f99"/>
 
-
+<!--
     <ListView
         android:id="@+id/event_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
-
+-->
 </LinearLayout>
 
 

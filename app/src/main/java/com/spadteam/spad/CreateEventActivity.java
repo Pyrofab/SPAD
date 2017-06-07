@@ -76,8 +76,8 @@ public class CreateEventActivity extends AppCompatActivity {
             }
 
            // if(eventEdited == null) {
-                Event event = new Event(place, time, description);
-                Event.addEvents(event, this);
+                //Event event = new Event(place, time, description);
+                //Event.addEvents(event, this);
 
                 if(PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(CreateEventActivity.this,
                         Manifest.permission.SEND_SMS)) {

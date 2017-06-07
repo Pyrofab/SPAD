@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spadteam.spad"
+<manifest
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.spadteam.spad">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-
-
 
     <application
         android:allowBackup="true"
@@ -17,10 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity
-            android:name="com.spadteam.spad.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -29,12 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.spadteam.spad.CreateEventActivity" />
-        <activity android:name="com.spadteam.spad.ContactManagerActivity"/>
-        <activity android:name="com.spadteam.spad.ContactEditorActivity"/>
-        <activity android:name="com.spadteam.spad.CurrentEvent"/>
-        <activity android:name="com.spadteam.spad.CurrentEventsActivity"/>
-        <activity android:name="com.spadteam.spad.EventChosen"/>
+        <activity android:name=".CreateEventActivity" />
+        <activity android:name=".ContactManagerActivity" />
+        <activity android:name=".ContactEditorActivity" />
+        <activity android:name=".CurrentEventsActivity" />
+        <activity android:name=".EventChosen" />
+        <activity android:name=".EventDetailsActivity"></activity>
     </application>
 
 </manifest>

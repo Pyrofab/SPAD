@@ -21,27 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:onClick="arrowLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="@string/left_arrow"/>
-            <TextView
-                android:id="@+id/show_msg_body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:onClick="arrowRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="@string/right_arrow"/>
-        </LinearLayout>
+        <ListView
+            android:id="@+id/event_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
 
     </LinearLayout>
 

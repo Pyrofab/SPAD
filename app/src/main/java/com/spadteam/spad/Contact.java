@@ -164,7 +164,7 @@ public class Contact {
 
         PhoneNumber(String phoneNo) {
             if(phonePattern == null)
-                phonePattern = Pattern.compile("^(\\+|0)?(\\d){8,11}$");
+                phonePattern = Pattern.compile("^(\\+|0)?(\\d){8,12}$");
 
             if(phonePattern.matcher(phoneNo).matches() || phoneNo.equals(""))
                 this.phoneNo = phoneNo;

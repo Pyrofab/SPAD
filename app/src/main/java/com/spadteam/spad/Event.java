@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by Clément on 03/06/2017.
+ *
  */
 
 public class Event {
