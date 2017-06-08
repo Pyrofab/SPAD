@@ -19,7 +19,6 @@ public class EventChosen extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_chosen);
 
-//        if(CurrentEventsActivity.getEventEdited() != null) {
             ((TextView) findViewById(R.id.place_event)).setText(
                     CurrentEventsActivity.listEvents.valueAt(CurrentEventsActivity.selected).getFirst().getPlace());
             ((TextView) findViewById(R.id.event_time)).setText(
@@ -28,7 +27,6 @@ public class EventChosen extends Activity{
                     CurrentEventsActivity.listEvents.valueAt(CurrentEventsActivity.selected).getFirst().getDescription());
             Button delete = (Button) findViewById(R.id.button_delete_event);
 
-            //Button delete = new Button(this);
             delete.setText(R.string.delete_event);
             delete.setOnClickListener((View v) -> {
                 //Event.removeEvent(CreateEventActivity.getEventEdited(), this);
@@ -36,7 +34,7 @@ public class EventChosen extends Activity{
                 setResult(RESULT_OK);
                 finish();
             });
-//        }
+
 
     }
 }

@@ -26,6 +26,7 @@ public class CreateEventActivity extends AppCompatActivity {
     static Event eventEdited;
 
     public static Event getEventEdited(){return eventEdited;}
+
     private EditText placeEvent;
     private EditText timeEvent;
     private EditText descriptionEvent;
@@ -50,6 +51,12 @@ public class CreateEventActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
     }
 
+
+    /**
+     * action of the button : to send message to contact who are selected
+     * @param v the view where the button is
+     *
+     */
     public void onMessageButtonClick(View v) {
         //System.out.println("slt");
         String phoneNo = "0643532554";
@@ -112,6 +119,12 @@ public class CreateEventActivity extends AppCompatActivity {
        // }
     }
 
+    /**
+     * send a sms
+     * @param phoneNo the phone number of the person we want to reach
+     * @param msg the msg that we want to send
+     *
+     */
     public void sendSMS(String phoneNo, String msg) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
@@ -136,8 +149,8 @@ public class CreateEventActivity extends AppCompatActivity {
 */
 
 
-
-      private class ContactArrayAdapter extends BaseAdapter { //pour afficher les contacts avec la chekcbox
+    //pour afficher les contacts avec la chekcbox
+      private class ContactArrayAdapter extends BaseAdapter {
 
         Context context;
 
@@ -184,7 +197,7 @@ public class CreateEventActivity extends AppCompatActivity {
             com.spadteam.spad.Contact c = getItem(position);
 
             if(c != null) {
-                TextView tt1 = (TextView) v.findViewById(R.id.contact_row_id);  // TODO fix this
+                TextView tt1 = (TextView) v.findViewById(R.id.contact_row_id);
                 TextView tt2 = (TextView) v.findViewById(R.id.contact_description);
                 TextView tt3 = (TextView) v.findViewById(R.id.categoryId);
 

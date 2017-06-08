@@ -26,9 +26,11 @@ public class ContactManagerActivity extends Activity {
 
         final ListView listview = (ListView) findViewById(R.id.contact_list);
 
+        //creation of an adapter to fill the listView
         adapter = new ContactArrayAdapter(this);
         listview.setAdapter(adapter);
 
+        // to show the editor's view
         listview.setOnItemClickListener((parent, view, position, id) -> {
             Intent i = new Intent(ContactManagerActivity.this, ContactEditorActivity.class);
 
@@ -58,6 +60,7 @@ public class ContactManagerActivity extends Activity {
         Toast.makeText(this, "Contact list cleared !", Toast.LENGTH_SHORT).show();
     }
 
+    //to show the listView with the contact
     private class ContactArrayAdapter extends BaseAdapter {
 
         Context context;
@@ -97,6 +100,7 @@ public class ContactManagerActivity extends Activity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
 
+            //  Instantiates a layout XML file into its corresponding View
             if(v == null) {
                 LayoutInflater vi;
                 vi = LayoutInflater.from(getContext());

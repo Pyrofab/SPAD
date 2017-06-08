@@ -41,6 +41,11 @@ public class ContactEditorActivity extends Activity {
         }
     }
 
+    /**
+     * action of the button : to confirm the changes of the contact
+     * @param v the view where the button is
+     *
+     */
     public void confirmContactChanges(View v) {
         try {
             TextView nameField = (TextView) findViewById(R.id.name_input_field);
@@ -74,6 +79,11 @@ public class ContactEditorActivity extends Activity {
         }
     }
 
+    /**
+     *  action of the button : to cancel the changes of a contact
+     *
+     * @param v the view where the button is
+     */
     public void cancelContactChanges(View v) {
         Toast.makeText(this, "operation cancelled", Toast.LENGTH_SHORT).show();
         contactEdited = null;
