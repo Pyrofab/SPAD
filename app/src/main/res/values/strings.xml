@@ -21,4 +21,5 @@
     <string name="read_messages">read messages</string>
     <string name="message_template">messageId : %1$s, threadId : %2$s, address : %3$s, contactId : %4$s, timeStamp : %5$s, body : %6$s</string>
     <string name="loading_data">Loading data...</string>
+    <string name="loading_finished">Loading finished !</string>
 </resources>

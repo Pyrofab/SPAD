@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Looper
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -19,8 +18,7 @@ import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
-import org.w3c.dom.Text
-import kotlin.concurrent.thread
+import java.util.*
 
 @Suppress("UNUSED_PARAMETER")
 class CurrentEventsActivity : AppCompatActivity() {
@@ -28,11 +26,16 @@ class CurrentEventsActivity : AppCompatActivity() {
     data class SpadEvent(val place: String, val time: String, val description : String)
 
     private val MY_PERMISSIONS_REQUEST_READ_MESSAGE = 0
-    val listEvents = SparseArray<List<SpadEvent>>()
 //    private var index = 0
     lateinit private var adapter: EventArrayAdapter
     internal val EDIT_EVENT_REQUEST = 0
 
+    companion object {
+        @JvmField
+        val listEvents = SparseArray<Pair<SpadEvent, List<String>>>()
+        @JvmField
+        var selected = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +46,13 @@ class CurrentEventsActivity : AppCompatActivity() {
         adapter = EventArrayAdapter(this, listEvents)
         listView.adapter = adapter
 
-        /*
         listView.setOnItemClickListener { _, _, position, _ ->
             val i = Intent(this, EventChosen::class.java)
 
-            CreateEventActivity.eventEdited = Event.getEvent(position)
+            selected = position
 
             startActivityForResult(i, EDIT_EVENT_REQUEST)
-        }*/
+        }
     }
 
     fun onMessageReadClick(v : View) {
@@ -78,10 +80,10 @@ class CurrentEventsActivity : AppCompatActivity() {
                         val body = cursor.getString(5)
                         //(findViewById(R.id.showSms) as TextView).text = getString(R.string.message_template).format(messageId, threadId, address, contactId, timeStamp, body)
                         if(body.contains("[Invitation]")) {
-                            listEvents.put(threadId.toInt(), listOf(SpadEvent("", "", body)))        //Ici j'ajoute le corps du sms a la liste
+                            listEvents.put(threadId.toInt(), Pair(SpadEvent("", "", body), LinkedList<String>()))        //Ici j'ajoute le corps du sms a la liste
                         }
                         if(body.contains("[Follow-up]"))
-                            listEvents.get(threadId.toInt())?.plus(Event("", "", body))
+                            listEvents.get(threadId.toInt())?.second?.plus(body)
                         if(body.contains("[Cancellation]"))
                             listEvents.remove(threadId.toInt())
 
@@ -89,6 +91,7 @@ class CurrentEventsActivity : AppCompatActivity() {
 //                        Toast.makeText(this, listEvents.toString(), Toast.LENGTH_SHORT).show()
                     } while (cursor.moveToNext())
                 } else {
+                    (findViewById(R.id.showSms) as TextView).post({(findViewById(R.id.showSms) as TextView).text = getString(R.string.loading_finished)})
 //                    Toast.makeText(this, "no event to display", Toast.LENGTH_SHORT).show()
                 }
 //                Toast.makeText(this, "finished !", Toast.LENGTH_SHORT).show()
@@ -99,12 +102,12 @@ class CurrentEventsActivity : AppCompatActivity() {
         }
     }
 
-    private inner class EventArrayAdapter internal constructor(internal var context: Context, internal var events : SparseArray<List<SpadEvent>>) : BaseAdapter() {
+    private inner class EventArrayAdapter internal constructor(internal var context: Context, internal var events : SparseArray<Pair<SpadEvent, List<String>>>) : BaseAdapter() {
 
         override fun getItem(position: Int): SpadEvent? {
             //return com.spadteam.spad.Event.getEvents(context)[position]
             //return if(events.valueAt(position) == null) null else events.valueAt(position)[0]
-            return events.valueAt(position)?.get(0)
+            return events.valueAt(position)?.first
         }
 
         /**
