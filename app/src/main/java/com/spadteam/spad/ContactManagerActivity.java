@@ -1,18 +1,17 @@
 package com.spadteam.spad;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ContactManagerActivity extends Activity {
 
@@ -53,10 +52,10 @@ public class ContactManagerActivity extends Activity {
         }
     }
 
-    public void clearContacts(View v) {
+    /*public void clearContacts(View v) {
         Contact.clearContacts(this);
         Toast.makeText(this, "Contact list cleared !", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     private class ContactArrayAdapter extends BaseAdapter {
 
@@ -93,6 +92,7 @@ public class ContactManagerActivity extends Activity {
             return com.spadteam.spad.Contact.getContacts(context).size();
         }
 
+        @SuppressLint("InflateParams")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;

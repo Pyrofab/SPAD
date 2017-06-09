@@ -3,10 +3,12 @@ package com.spadteam.spad;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -17,19 +19,51 @@ import android.widget.Toast;
 public class ContactEditorActivity extends Activity {
 
     static Contact contactEdited;
+    private Button confirm;
+    private EditText nameField, phoneField, mailField;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_editor);
 
+        confirm = (Button) findViewById(R.id.confirm_contact_changes);
+
+        nameField = (EditText) findViewById(R.id.name_input_field);
+        phoneField = (EditText) findViewById(R.id.phone_number_input_field);
+        mailField = (EditText) findViewById(R.id.mail_input_field);
+
+        phoneField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                confirm.setEnabled(Contact.isPhoneValid(phoneField.getText().toString()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        mailField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                confirm.setEnabled(Contact.isMailValid(mailField.getText().toString()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
         if(contactEdited != null) { //quand on veut modifier le contact
-            ((TextView) findViewById(R.id.name_input_field)).setText(
-                    contactEdited.getName());
-            ((TextView) findViewById(R.id.phone_number_input_field)).setText(
-                    contactEdited.getPhoneNo());
-            ((TextView) findViewById(R.id.mail_input_field)).setText(
-                    contactEdited.getMail());
+            nameField.setText(contactEdited.getName());
+            phoneField.setText(contactEdited.getPhoneNo());
+            mailField.setText(contactEdited.getMail());
+
             Button delete = new Button(this);
             delete.setText(R.string.delete);
             delete.setOnClickListener((View v) -> {
@@ -43,12 +77,21 @@ public class ContactEditorActivity extends Activity {
 
     public void confirmContactChanges(View v) {
         try {
-            TextView nameField = (TextView) findViewById(R.id.name_input_field);
-            TextView phoneField = (TextView) findViewById(R.id.phone_number_input_field);
-            TextView mailField = (TextView) findViewById(R.id.mail_input_field);
             String name = nameField.getText().toString();
             String phoneNo = phoneField.getText().toString();
             String mail = mailField.getText().toString();
+
+            if(!(Contact.isPhoneValid(phoneNo))) {
+                Toast.makeText(this, "please input a valid phone number", Toast.LENGTH_SHORT).show();
+                confirm.setEnabled(false);
+                return;
+            }
+
+            if(!(Contact.isMailValid(mail))) {
+                Toast.makeText(this, "please input a valid mail address", Toast.LENGTH_SHORT).show();
+                confirm.setEnabled(false);
+                return;
+            }
 
             if (name.equals("")) {
                 Toast.makeText(this, "please input a valid name", Toast.LENGTH_SHORT).show();

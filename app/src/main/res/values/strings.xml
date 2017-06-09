@@ -7,19 +7,27 @@
     <string name="create_event">Create your event</string>
     <string name="review_events">Current Events</string>
     <string name="manage_contacts">Contacts</string>
-    <string name="preference_file_key">com.spadteam.spad.contact_preferences</string>
-    <string name="preference_file_key_event">com.spadteam.spad.event_preferences</string>
+    <string name="preference_file_key" translatable="false">com.spadteam.spad.contact_preferences</string>
+    <string name="preference_file_key_event" translatable="false">com.spadteam.spad.event_preferences</string>
     <string name="edit_contact_name">name</string>
     <string name="edit_contact_phone">phone number (optional)</string>
     <string name="edit_contact_mail">mail (optional)</string>
     <string name="edit_contact_confirmation">Save changes</string>
     <string name="contacts">Contacts</string>
     <string name="delete">Delete</string>
-    <string name="delete_event">Delete this event</string>
-    <string name="right_arrow"><![CDATA[>]]></string>
-    <string name="left_arrow"><![CDATA[<]]></string>
+    <string name="delete_event">Cancel this event</string>
+    <string name="right_arrow" translatable="false"><![CDATA[>]]></string>
+    <string name="left_arrow" translatable="false"><![CDATA[<]]></string>
     <string name="read_messages">read messages</string>
-    <string name="message_template">messageId : %1$s, threadId : %2$s, address : %3$s, contactId : %4$s, timeStamp : %5$s, body : %6$s</string>
-    <string name="loading_data">Loading data...</string>
+    <string name="message_template" translatable="false">messageId : %1$s, threadId : %2$s, address : %3$s, contactId : %4$s, timeStamp : %5$s, body : %6$s</string>
+    <string name="loading_data">Loading data…</string>
     <string name="loading_finished">Loading finished !</string>
+    <string name="discussion_about_this_event">Discussion about this event</string>
+    <string name="send_message">Send message</string>
+    <string name="update_event">Update Event</string>
+    <string name="event_chosen_description">Description :</string>
+    <string name="event_chosen_time">Time of your event :</string>
+    <string name="event_chosen_place">Place of the event :</string>
+    <string name="access_denied">This application is not authorized to perform this action</string>
+    <string name="no_current_event">No event to display</string>
 </resources>

@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Spad</string>
+    <string name="action_settings">Parametres</string>
+    <string name="sens_message">Envoyer</string>
+    <string name="phone_number_hint">Entrez un numéro de téléphone</string>
+    <string name="event_content_hint">Quel est le but de cet évènement ?</string>
+    <string name="create_event">Créez votre évènement</string>
+    <string name="review_events">Évènements en cours</string>
+    <string name="manage_contacts">Contacts</string>
+    <string name="edit_contact_name">Nom</string>
+    <string name="edit_contact_phone">Numéro de téléphone (optionnel)</string>
+    <string name="edit_contact_mail">Mail (optionnel)</string>
+    <string name="edit_contact_confirmation">Sauvegarder mes changements</string>
+    <string name="contacts">Contacts</string>
+    <string name="delete">Supprimer</string>
+    <string name="delete_event">Annuler cet évènement</string>
+    <string name="read_messages">Rechercher mes évènements</string>
+    <string name="loading_data">Chargement des données…</string>
+    <string name="loading_finished">Chargement terminé !</string>
+    <string name="discussion_about_this_event">Discutez de cet évènement</string>
+    <string name="send_message">Envoyer message</string>
+    <string name="update_event">Mettre à jour l\'évènement</string>
+    <string name="event_chosen_description">Description :</string>
+    <string name="event_chosen_time">Heure de l\'évènement :</string>
+    <string name="event_chosen_place">Lieu :</string>
+    <string name="access_denied">Cette application n\'est pas autorisée à réaliser cette action</string>
+    <string name="no_current_event">Aucun évènement à afficher</string>
+</resources>

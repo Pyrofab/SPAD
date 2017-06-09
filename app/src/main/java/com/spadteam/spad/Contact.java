@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -78,14 +77,14 @@ public class Contact {
 
 
 
-    static void clearContacts(Context context) {
+    /*static void clearContacts(Context context) {
         contacts.clear();
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
         editor.apply();
-    }
+    }*/
 
     static void refreshData(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
@@ -157,7 +156,24 @@ public class Contact {
                 ", mail='" + mail + '\'' +
                 '}';
     }
-    static class PhoneNumber {
+
+    private static Pattern phonePattern;
+    static boolean isPhoneValid(String phoneNo) {
+        if(phonePattern == null)
+            phonePattern = Pattern.compile("^([+0])?(\\d){10,12}$");
+
+        return phonePattern.matcher(phoneNo).matches() || phoneNo.equals("");
+    }
+
+    private static Pattern mailPattern;
+    static boolean isMailValid(String mail) {
+        if(mailPattern == null)
+            mailPattern = Pattern.compile("^(\\w)+@(\\w)+\\.(\\w)+$");
+
+        return mailPattern.matcher(mail).matches() || mail.equals("");
+    }
+
+    /*static class PhoneNumber {
         static final PhoneNumber EMPTY = new PhoneNumber("");
         private String phoneNo;
         static Pattern phonePattern;
@@ -176,9 +192,9 @@ public class Contact {
         public String toString() {
             return this.phoneNo;
         }
-    }
+    }*/
 
-    static class MailAddress {
+    /*static class MailAddress {
         public static final MailAddress EMPTY = new MailAddress("");
         private String mail;
         private static Pattern mailPattern;
@@ -199,5 +215,5 @@ public class Contact {
         }
 
 
-    }
+    }*/
 }

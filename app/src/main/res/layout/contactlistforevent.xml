@@ -20,6 +20,7 @@
             android:id="@+id/checked_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="25dip"
             android:layout_marginRight="25dip"
         />
 

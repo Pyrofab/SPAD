@@ -6,6 +6,7 @@
     tools:context="com.spadteam.spad.CurrentEventsActivity">
 
     <LinearLayout
+        android:id="@+id/linear_layout_current_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,8 +19,25 @@
 
         <TextView
             android:id="@+id/showSms"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <!--<ProgressBar
+            android:id="@+id/determinateBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />-->
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/determinateBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="visible" />
 
         <ListView
             android:id="@+id/event_list"

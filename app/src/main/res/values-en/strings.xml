@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Spad</string>
+    <string name="action_settings">Settings</string>
+    <string name="sens_message">Send</string>
+    <string name="phone_number_hint">Enter a phone number</string>
+    <string name="event_content_hint">What is this event about ?</string>
+    <string name="create_event">Create your event</string>
+    <string name="review_events">Current events</string>
+    <string name="manage_contacts">Contacts</string>
+    <string name="edit_contact_name">Name</string>
+    <string name="edit_contact_phone">Phone number (optional)</string>
+    <string name="edit_contact_mail">Mail (optional)</string>
+    <string name="edit_contact_confirmation">Save my changes</string>
+    <string name="contacts">Contacts</string>
+    <string name="delete">Delete</string>
+    <string name="delete_event">Cancel this event</string>
+    <string name="read_messages">Search for events</string>
+    <string name="loading_data">Loading data…</string>
+    <string name="loading_finished">Loading finished !</string>
+    <string name="discussion_about_this_event">Discuss about this event</string>
+    <string name="send_message">Send message</string>
+    <string name="update_event">Update event</string>
+    <string name="event_chosen_description">Description :</string>
+    <string name="event_chosen_time">Time :</string>
+    <string name="event_chosen_place">Place :</string>
+    <string name="access_denied">This application is not authorized to perform this action</string>
+    <string name="no_current_event">No event to display</string>
+</resources>

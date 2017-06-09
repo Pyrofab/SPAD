@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spadteam.spad">
+    package="com.spadteam.spad"
+    android:versionName="1.0"
+    android:versionCode="1">
 
-    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
+        <receiver android:name=".SmsListener"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -27,8 +36,8 @@
         <activity android:name=".ContactManagerActivity" />
         <activity android:name=".ContactEditorActivity" />
         <activity android:name=".CurrentEventsActivity" />
-        <activity android:name=".EventChosen" />
-        <activity android:name=".EventDetailsActivity"></activity>
+        <activity android:name=".EventChosen"
+            android:windowSoftInputMode="stateUnchanged"/>
     </application>
 
 </manifest>

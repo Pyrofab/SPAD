@@ -1,6 +1,7 @@
 package com.spadteam.spad;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,19 +14,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class CreateEventActivity extends AppCompatActivity {
 
     protected ContactArrayAdapter adapter;
 
-
-    static Event eventEdited;
-
-    public static Event getEventEdited(){return eventEdited;}
     private EditText placeEvent;
     private EditText timeEvent;
     private EditText descriptionEvent;
@@ -52,8 +55,11 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public void onMessageButtonClick(View v) {
         //System.out.println("slt");
-        String phoneNo = "0643532554";
-
+        //String phoneNo = "0643532554";
+        List<String> phoneNo = new ArrayList<>();
+        for(Map.Entry<Contact, Boolean> e :adapter.selectedContacts.entrySet())
+            if(e.getValue())
+                phoneNo.add(e.getKey().getPhoneNo());
         //pour créer un event au clic du bouton
 
         try {
@@ -83,8 +89,8 @@ public class CreateEventActivity extends AppCompatActivity {
                         Manifest.permission.SEND_SMS)) {
                     ActivityCompat.requestPermissions(CreateEventActivity.this, new String[]{Manifest.permission.SEND_SMS},
                             MY_PERMISSIONS_REQUEST_SEND_MESSAGE);
-                    Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
-                            Toast.LENGTH_LONG).show();
+                    /*Toast.makeText(getApplicationContext(), "Needs permission : " + MY_PERMISSIONS_REQUEST_SEND_MESSAGE,
+                            Toast.LENGTH_LONG).show();*/
                 } else {
                     /*CheckBox cb = (CheckBox) findViewById(R.id.checked_contact);
 
@@ -93,8 +99,11 @@ public class CreateEventActivity extends AppCompatActivity {
                     }*/
                     String message = "[Invitation] Vous avez RDV au " + placeEvent.getText().toString() + " à " + timeEvent.getText().toString() + " pour " + descriptionEvent.getText().toString() + ".";
 
-                    //for(int i=0; i<phoneNo.length;i++){}
-                    sendSMS(phoneNo, message); //send the message
+                    for(String p : phoneNo) {
+                        Toast.makeText(this, sendSMS(p, message) ? "Message sent" : "Something failed",
+                                Toast.LENGTH_SHORT).show(); //send the message
+                        System.out.println("address : " + p);
+                    }
                 }
             /*} else {
                 eventEdited.setPlace(place);
@@ -112,16 +121,14 @@ public class CreateEventActivity extends AppCompatActivity {
        // }
     }
 
-    public void sendSMS(String phoneNo, String msg) {
+    public static boolean sendSMS(String phoneNo, String msg) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNo, null, msg, null, null);
-            Toast.makeText(getApplicationContext(), "Message Sent",
-                    Toast.LENGTH_LONG).show();
+            return true;
         } catch (Exception ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(),
-                    Toast.LENGTH_LONG).show();
             ex.printStackTrace();
+            return false;
         }
     }
 
@@ -140,10 +147,16 @@ public class CreateEventActivity extends AppCompatActivity {
       private class ContactArrayAdapter extends BaseAdapter { //pour afficher les contacts avec la chekcbox
 
         Context context;
+        Map<CheckBox, Contact> contactsCheckboxes;
+        Map<Contact, Boolean> selectedContacts;
 
         ContactArrayAdapter(Context context) {
             super();
             this.context = context;
+            contactsCheckboxes = new HashMap<>();
+            selectedContacts = new HashMap<>();
+            for(Contact c : Contact.getContacts(context))
+                selectedContacts.put(c, false);
         }
 
         @Nullable
@@ -172,6 +185,7 @@ public class CreateEventActivity extends AppCompatActivity {
             return com.spadteam.spad.Contact.getContacts(context).size();
         }
 
+        @SuppressLint("InflateParams")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
@@ -187,6 +201,10 @@ public class CreateEventActivity extends AppCompatActivity {
                 TextView tt1 = (TextView) v.findViewById(R.id.contact_row_id);  // TODO fix this
                 TextView tt2 = (TextView) v.findViewById(R.id.contact_description);
                 TextView tt3 = (TextView) v.findViewById(R.id.categoryId);
+
+                final CheckBox cb = (CheckBox) v.findViewById(R.id.checked_contact);
+                contactsCheckboxes.put(cb, getItem(position));
+                cb.setOnClickListener(view -> selectedContacts.put(contactsCheckboxes.get(cb), cb.isChecked()));
 
                 if(tt1 != null) {
                     tt1.setText(c.getName());
