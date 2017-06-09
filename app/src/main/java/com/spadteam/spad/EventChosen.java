@@ -55,7 +55,7 @@ public class EventChosen extends Activity{
                 setResult(RESULT_OK);
                 finish();
             });
-//        }
+
 
     }
 

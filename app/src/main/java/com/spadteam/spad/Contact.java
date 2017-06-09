@@ -28,6 +28,7 @@ public class Contact {
         if(contacts == null) {
             try {
                 contacts = new ArrayList<>();
+                //recuperation d'un espace de stockage propre à l'application identifié par une clé
                 SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
                         Context.MODE_PRIVATE);
                 int nbContacts = sharedPref.getInt("number", 0);
@@ -35,10 +36,11 @@ public class Contact {
                 String phoneNumber;
                 String mailAddress;
                 for (int i = 1; i <= nbContacts; i++) {
+                    //recuperation des infos stockées dans l'espace de stockage
                     name = sharedPref.getString(i + "#name", "");
                     phoneNumber = (sharedPref.getString(i + "#phone", ""));
                     mailAddress = (sharedPref.getString(i + "#mail", ""));
-                    contacts.add(new Contact(name, phoneNumber, mailAddress));
+                    contacts.add(new Contact(name, phoneNumber, mailAddress)); //ajout des infos a la liste de contacts
                 }
             } catch (IllegalArgumentException e) {
                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -48,10 +50,16 @@ public class Contact {
         return new ArrayList<>(contacts);
     }
 
+    /**
+     * add contact into the SharedPreferences and the List
+     * @param context the activity that invokes this method
+     * @param contact the contact that we want to add
+     */
     static void addContact(Contact contact, Context context) {
         contacts.add(contact);
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
+        //ouverture d'un éditeur pour avoir accès aux méthodes d'édition
         SharedPreferences.Editor editor = sharedPref.edit();
         int nbContacts = contacts.size();
         editor.putInt("number", nbContacts);
@@ -61,6 +69,11 @@ public class Contact {
         editor.apply();
     }
 
+    /**
+     * remove contact from the List
+     * @param context the activity that invokes this method
+     * @param contact the contact that we want to remove
+     */
     static void removeContact(Contact contact, Context context) {
         removeContact(contacts.indexOf(contact), context);
     }
@@ -70,12 +83,14 @@ public class Contact {
         Toast.makeText(context, "contact deleted", Toast.LENGTH_SHORT).show();
     }
 
-
+    /**
+     * get a contact
+     * @param id the position of the contact in the List
+     * @return the contact
+     */
     static Contact getContact(int id) {
         return contacts.get(id);
     }
-
-
 
     /*static void clearContacts(Context context) {
         contacts.clear();
@@ -86,6 +101,12 @@ public class Contact {
         editor.apply();
     }*/
 
+
+    /**
+     *
+     * @param context the activity that invokes this method
+     *
+     */
     static void refreshData(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
@@ -99,51 +120,63 @@ public class Contact {
         }
         editor.apply();
     }
-/*
-    public static void forEach(Consumer<Contact> fun) {
-        for(Contact c : contacts)
-            fun.accept(c);
-    }
-*/
-/*
-    public Contact(String name) {
-        this(name, PhoneNumber.EMPTY.toString(), MailAddress.EMPTY.toString());
-    }
 
-    public Contact(String name, PhoneNumber phoneNo) {
-        this(name, phoneNo.toString(), MailAddress.EMPTY.toString());
-    }
-
-    public Contact(String name, MailAddress mail) {
-        this(name, PhoneNumber.EMPTY.toString(), mail.toString());
-    }
-*/
     Contact(String name, String phoneNo, String mail) {
         this.name = name;
         this.phoneNo = phoneNo;
         this.mail = mail;
     }
 
+    /**
+     * get the name of the contact
+     *
+     * @return the name of the contact
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * set the name of the contact
+     * @param name the name of the contact
+     *
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * get the phone number of the contact
+     *
+     * @return the phone number of the contact
+     */
     String getPhoneNo() {
         return phoneNo;
     }
 
+    /**
+     * set the phone number of the contact
+     * @param phoneNo the phone number of the contact
+     *
+     */
     void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
 
+    /**
+     * get the mail of the contact
+     * @return the mail of the contact
+     *
+     */
     String getMail() {
         return mail;
     }
 
+    /**
+     * set the mail of the contact
+     * @param mail the mail of the contact
+     *
+     */
     void setMail(String mail) {
         this.mail = mail;
     }
