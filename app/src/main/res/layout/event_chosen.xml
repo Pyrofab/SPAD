@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.spadteam.spad.EventChosen">
 
+    <!-- Activity used to show the specification of an event when you click on it in the 'activity_current_events.xml' -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

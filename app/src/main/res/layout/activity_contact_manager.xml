@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context="com.spadteam.spad.ContactManagerActivity">
 
+    <!-- activity to see all our contacts-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,6 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Clear the contacts !"
             android:onClick="clearContacts"/>-->
+
         <ListView
             android:id="@+id/contact_list"
             android:layout_width="match_parent"

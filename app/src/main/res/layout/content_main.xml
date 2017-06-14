@@ -8,6 +8,7 @@
     tools:context="com.spadteam.spad.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <!-- the 3 buttons for the main activity -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.spadteam.spad.CreateEventActivity">
 
+    <!-- activity where we can create an event -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -90,6 +91,7 @@
             android:onClick="onMessageButtonClick"
             />
 
+        <!-- List of contacts with a CheckBoc in order to choose to whom we want to send the invitation -->
         <ListView
             android:id="@+id/contact_list2"
             android:layout_width="match_parent"

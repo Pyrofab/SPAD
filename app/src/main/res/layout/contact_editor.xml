@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:id="@+id/edit_contact_layout">
 
+    <!-- Activity where we can change specification of contacts-->
+    <!-- This activity is used for the creation and the modification of contacts -->
     <EditText
         android:id="@+id/name_input_field"
         android:layout_width="match_parent"

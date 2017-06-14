@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.spadteam.spad.CurrentEventsActivity">
 
+    <!-- activity where we can read our sms in order to know which events are planned -->
     <LinearLayout
         android:id="@+id/linear_layout_current_events"
         android:layout_width="match_parent"
