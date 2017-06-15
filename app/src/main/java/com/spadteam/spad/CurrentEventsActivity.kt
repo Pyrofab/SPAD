@@ -22,8 +22,13 @@ import java.util.regex.Pattern
 
 
 @Suppress("UNUSED_PARAMETER")
+/**
+ * @author Fabien
+ * Class used for managing current events.
+ */
 class CurrentEventsActivity : AppCompatActivity() {
 
+    /**Class holding the data of an event*/
     data class SpadEvent(var place: String, var time: String, var description : String)
 
     private val MY_PERMISSIONS_REQUEST_READ_MESSAGE = 0
@@ -31,6 +36,7 @@ class CurrentEventsActivity : AppCompatActivity() {
     internal val EDIT_EVENT_REQUEST = 0
 //    lateinit var progressBar : ContentLoadingProgressBar
 
+    /**Data structure holding the static data of the class*/
     companion object {
         lateinit private var adapter: EventArrayAdapter
         @JvmField
@@ -79,6 +85,7 @@ class CurrentEventsActivity : AppCompatActivity() {
         }
     }
 
+    /**Called when the user activates the read messages button*/
     fun onMessageReadClick(v : View) {
         if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_SMS)) {
@@ -94,6 +101,7 @@ class CurrentEventsActivity : AppCompatActivity() {
         }
     }
 
+    /**Lambda function used to update events*/
     val updateEvents = {
         val SORT_ORDER = "date ASC"
         val cursor = contentResolver.query(Uri.parse("content://sms"), arrayOf("_id", "thread_id", "address", "person", "date", "body"), null, null, SORT_ORDER)
@@ -163,14 +171,16 @@ class CurrentEventsActivity : AppCompatActivity() {
         cursor.close()
     }
 
+    /*
     inner class SmsListener : BroadcastReceiver() {
 
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == "android.provider.Telephony.SMS_RECEIVED")
                 Thread(updateEvents).start()
         }
-    }
+    }*/
 
+    /**Custom adapter to manage the list*/
     private inner class EventArrayAdapter internal constructor(internal var context: Context, internal var events : SparseArray<Triple<SpadEvent, MutableList<String>, String>>) : BaseAdapter() {
 
         override fun getItem(position: Int): SpadEvent? {
@@ -207,7 +217,7 @@ class CurrentEventsActivity : AppCompatActivity() {
 
             if (e != null && v != null) {
                 val tt1 = v.findViewById(R.id.event_row_id) as TextView
-                val tt2 = v.findViewById(R.id.event_time) as TextView //fait reference a la row d event
+                val tt2 = v.findViewById(R.id.event_time) as TextView
                 val tt3 = v.findViewById(R.id.event_description) as TextView
 
                 tt1.text = e.place
